@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos - Collao Inversiones en Minería SPA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #fbb040;
+        }
+
+        header {
+            padding: 1.5rem 0;
+            background-color: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a3a5f;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            max-height: 70px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .menu a {
+            color: #e6f1ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #fbb040;
+        }
+
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.9)), url('https://i.postimg.cc/Wp0QGkTz/Whats-App-Image-2025-12-13-at-6-20-16-PM.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #a8b2d1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #fbb040;
+            color: #0a192f;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e59d36;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .content-text {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: #a8b2d1;
+            font-size: 1.1rem;
+        }
+
+        /* MENÚ DESPLEGABLE */
+        .equipment-menu {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        .menu-btn {
+            background: rgba(26, 58, 95, 0.5);
+            color: #fbb040;
+            border: 1px solid #1a3a5f;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background: rgba(26, 58, 95, 0.8);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #020c1b;
+            border: 1px solid #1a3a5f;
+            border-radius: 6px;
+            min-width: 220px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            padding: 0.8rem 0;
+        }
+
+        .menu-item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .submenu a {
+            display: block;
+            color: #e6f1ff;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .submenu a:hover {
+            background: #1a3a5f;
+        }
+
+        /* BOTONES PDF */
+        .pdf-links {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        /* ESPECIFICACIONES Y MANTENIMIENTO */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-card {
+            background: rgba(26, 58, 95, 0.3);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #1a3a5f;
+        }
+
+        .spec-card h3 {
+            color: #fbb040;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #020c1b;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #a8b2d1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .menu {
+                display: none;
+            }
+            .logo {
+                max-height: 55px;
+            }
+            .equipment-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            .menu-item:hover .submenu {
+                max-height: 500px;
+            }
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <img src="https://i.ibb.co/Rk3jhT9k/Whats-App-Image-2025-09-10-at-8-04-15-PM-removebg-preview.png" alt="Collao Inversiones" class="logo">
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="quienes-somos.html">Quiénes Somos</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="experiencia.html">Experiencia</a>
+                <a href="equipos.html">Equipos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>FLOTA DE EQUIPOS</h1>
+            <p>Más de 50 unidades certificadas y en óptimas condiciones</p>
+            <a href="https://wa.me/56984668575" target="_blank" class="btn">Contáctanos</a>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section>
+        <div class="section-title">
+            <h2>NUESTRA FLOTA</h2>
+        </div>
+        <div class="content-text">
+            <p>Contamos con equipos de marcas reconocidas (Volvo, John Deere, Sandvik), todos con certificaciones vigentes, mantenimiento preventivo y operadores certificados.</p>
+        </div>
+
+        <!-- MENÚ DESPLEGABLE -->
+        <div class="equipment-menu">
+            <div class="menu-item">
+                <div class="menu-btn">Camiones</div>
+                <div class="submenu">
+                    <a href="#">Camión tolva</a>
+                    <a href="#">Camión aljibe (12.000, 20.000 y 30.000 L)</a>
+                    <a href="#">Camión batea</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-btn">Maquinaria Pesada</div>
+                <div class="submenu">
+                    <a href="#">Retroexcavadora</a>
+                    <a href="#">Cargador frontal</a>
+                    <a href="#">Excavadora</a>
+                    <a href="#">Motoniveladora</a>
+                    <a href="#">Chancadoras móviles</a>
+                    <a href="#">Perforadoras</a>
+                    <a href="#">Cintas stacker</a>
+                    <a href="#">Seleccionadora 4 brazos</a>
+                    <a href="#">Cubas de agua 30 M³</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-btn">Equipos de Transporte</div>
+                <div class="submenu">
+                    <a href="#">Camión pluma 12 ton</a>
+                    <a href="#">Cama baja</a>
+                    <a href="#">Rampla</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-btn">Equipos</div>
+                <div class="submenu">
+                    <a href="#">Generadores</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENLACES A PDFs -->
+        <div class="pdf-links">
+            <a href="https://docdro.id/idq1d0b" target="_blank" class="btn">Descargar Flota Camiones</a>
+            <a href="https://docdro.id/jfi0hZh" target="_blank" class="btn">Descargar Flota maquinaria</a>
+        </div>
+
+        <!-- ESPECIFICACIONES TÉCNICAS -->
+        <div class="section-title">
+            <h2>ESPECIFICACIONES TÉCNICAS</h2>
+        </div>
+        <div class="content-text">
+            <p>Contamos con una amplia gama de camiones, maquinaria pesada entre otros. Dejamos aquí algunas especificaciones técnicas de nuestra maquinaria.</p>
+        </div>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <h3>Camión Tolva Volvo FMX</h3>
+                <p>Capacidad: 18 m³ | Motor: D13K 500 HP | Transmisión: I-Shift | Certificación: SICEP | Año: 2023</p>
+            </div>
+            <div class="spec-card">
+                <h3>Camión Aljibe Volvo FH</h3>
+                <p>Capacidad: 30.000 L | Chasis reforzado | Certificación sanitaria vigente | Sistema de bombeo automático | Año: 2022</p>
+            </div>
+            <div class="spec-card">
+                <h3>Camión Batea Volvo FM</h3>
+                <p>Capacidad: 12 m³ | Caja hidráulica | Certificación de carga útil | GPS y control remoto | Año: 2023</p>
+            </div>
+            <div class="spec-card">
+                <h3>Retroexcavadora John Deere 510G</h3>
+                <p>Potencia: 105 HP | Brazo: 4.2 m | Capacidad cuchara: 1.0 m³ | Transmisión hidrostática | Certificación de operador</p>
+            </div>
+            <div class="spec-card">
+                <h3>Chancador Móvil Sandvik QJ341</h3>
+                <p>Capacidad: 400 ton/h | Motor: Scania DC13 380 HP | Sistema de control remoto | Certificación de seguridad minera | Año: 2021</p>
+            </div>
+        </div>
+
+        <!-- MANTENIMIENTO Y SEGURIDAD -->
+        <div class="section-title">
+            <h2>MANTENIMIENTO Y SEGURIDAD</h2>
+        </div>
+        <div class="content-text">
+            <p>
+                Cada unidad de nuestra flota cuenta con un plan de mantenimiento preventivo programado, inspecciones diarias y certificaciones vigentes. 
+                Trabajamos únicamente con maquinaria de marcas reconocidas (Volvo, John Deere, Sandvik) y de procedencia garantizada. 
+                No operamos con equipos de origen dudoso, lo que nos permite asegurar mayor durabilidad, rendimiento y confiabilidad en cada operación.
+            </p>
+            <p>
+                Todos nuestros operadores están certificados, capacitados y cumplen con los protocolos de seguridad exigidos por la gran minería.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Collao Inversiones en Minería SPA</p>
+        <p>Soluciones Mineras · Transporte · Logística Integral</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
